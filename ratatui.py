@@ -13,13 +13,22 @@ def generuj_heslo (pm,pv,pc,pz):
         heslo += random.choice(cislo)
     for i in range(pz):
         heslo += random.choice("+-*/?.:@&#")
-    return heslo
+
+    real_heslo= ""
+    while len(heslo) > 0:
+        i = random.randrange(len(heslo))
+        real_heslo += heslo[i]
+        heslo = heslo[:i] + heslo[i+1:]
+
+    return real_heslo
+
 
 
 m = int(input("pocet malych:"))
 v = int(input("pocet velkych:"))
 c = int(input("pocet cisel:"))
 z = int(input("pocet znakov:"))
+r = int(input("pocet hesiel:"))
 
-
-print(generuj_heslo(m,v,c,z))
+for i in range (r):
+    print(generuj_heslo(m,v,c,z))
