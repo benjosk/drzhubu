@@ -4,13 +4,20 @@ t = text.split()
 zoz =[]
 def split(word):
     return [char for char in word]
+vysledok =""
 for slovo in t:
-    pismena = split(slovo)
-    pismena = pismena[1:-1]
     pis=""
-    for i in range(len(pismena)):
-        p = random.choice(pismena)
-        pismena.remove(p)
-        pis += p
-    rez = slovo[0] + pis + slovo[-1]
-    print(rez)
+    pismena = split(slovo)
+    if len(pismena) <4:
+        listToStr = ''.join([str(elem) for elem in pismena])
+        vysledok += listToStr + " "
+    else:
+        pismena = pismena[1:-1]
+        for i in range(len(pismena)):
+            p = random.choice(pismena)
+            pismena.remove(p)
+            pis += p
+        rez = slovo[0] + pis + slovo[-1] + " "
+        vysledok += rez
+print(vysledok)
+
