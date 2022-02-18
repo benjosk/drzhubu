@@ -1,0 +1,34 @@
+import random
+pravdepodobnost_mutacie=30
+povodnaDNA="AGCGTTGACCCATGTGGGCACGAGTGTACCCTTAGA"
+novaDNA=""
+zmena=0
+zmeny =[]
+for i in range(100):
+    for znak in povodnaDNA:
+        pp = random.randint(0,100)
+        if pp > pravdepodobnost_mutacie:
+            novaDNA += znak
+        elif pp < pravdepodobnost_mutacie:
+            zmena += 1
+            if znak == "A":
+                novaDNA += "T"
+            if znak == "T":
+                novaDNA += "A"
+            if znak == "C":
+                novaDNA += "G"
+            if znak == "G":
+                novaDNA += "C"
+    zmeny.append(zmena)
+    novaDNA = ""
+    zmena = 0
+# print(f'Pôvodná DNA: {povodnaDNA}')
+# print(f'Nová DNA:    {novaDNA}')
+# print(f'Mutácia prebehla na {zmena} nukleotidoch z celkového počtu {len(povodnaDNA)}')
+print(zmeny)
+cislo = 0
+for i in range(len(zmeny)):
+    cislo += zmeny[i]
+    ap = cislo / len(zmeny)
+
+print(ap)
